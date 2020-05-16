@@ -1,10 +1,25 @@
 import React from 'react';
+import { useFetchData } from '../Context'
 
 
+const ButtonNextPrev = () => {
+    const {
+        isPage,
+        setIsPage
+      } = useFetchData()
 
-const ButtonNextPrev = (props) => {
+      const handleChangePage = () => {
+        if (isPage === 1) {
+          setIsPage(isPage + 1)
+        } else {
+          setIsPage(1)
+        }
+      }
     return (
-        <button>siguiente</button>
+        <div>
+            <div>Página actual: {isPage}</div>
+            <button onClick={handleChangePage}>siguiente</button>
+        </div>
     )
 }
 
